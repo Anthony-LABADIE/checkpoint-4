@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import api from "../services/api";
 import { authContext } from "../contexts/AuthContexts";
+import "./Login.css";
+import LogoSiteWeb from "../Components/Navbar/LogoSiteWeb";
 
 function Login() {
   const { login } = useContext(authContext);
@@ -23,36 +25,41 @@ function Login() {
   };
   return (
     <div>
-      <label htmlFor="Login">
-        Email <br />
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <br />
-      <label htmlFor="Login">
-        Password <br />
-        <input
-          type="text"
-          name="Password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
+      <div>
+        <LogoSiteWeb />
+      </div>
+      <div className="Containeur_login">
+        <label htmlFor="Login">
+          Email <br />
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <br />
+        <label htmlFor="Login">
+          Password <br />
+          <input
+            type="text"
+            name="Password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </label>
 
-      <NavLink to="/inscription">
-        <p>Pas de compte ?</p>
-      </NavLink>
-      <NavLink to="/home">
-        <button type="button" onClick={handleSubmit}>
-          Se connecter
-        </button>
-      </NavLink>
+        <NavLink className="navlink" to="/inscription">
+          <p>Pas de compte ?</p>
+        </NavLink>
+        <NavLink className="navlink" to="/home">
+          <button type="button" onClick={handleSubmit}>
+            Se connecter
+          </button>
+        </NavLink>
+      </div>
     </div>
   );
 }

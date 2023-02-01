@@ -11,6 +11,15 @@ const filmController = {
         res.sendStatus(500);
       });
   },
+  getFilmByUser: (_, res) => {
+    filmModel
+      .findByUser()
+      .then((film) => res.send(film))
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  },
   getOneFilm: (req, res) => {
     const { id } = req.params;
     filmModel

@@ -1,4 +1,5 @@
-body {
+body,
+html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -6,9 +7,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--main-bg-color);
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 :root {
-  --main-bg-color: #03101C;
+  --main-bg-color: #03101c;
   --text-bg-color: #e3c75f;
   --text-font-family: cursive;
 
@@ -25,4 +30,8 @@ body {
   --h3-font-size: 1rem;
   --h4-font-size: 1rem;
   --from-bg-color: #ffff9e;
+}
+.navlink {
+  text-decoration: none;
+  color: var(--text-bg-color);
 }

@@ -10,6 +10,14 @@ const findAll = () => {
     .query("SELECT * FROM film")
     .then(([res]) => res);
 };
+const findByUser = () => {
+  return database
+    .promise()
+    .query(
+      "SELECT film.title, film.release_date, film.duration, film.genre, film.realisateur_id, film.id_status, film.id_library, film.image, film.affiche,user.id, user.firstname, user.lastname FROM library JOIN film ON library.film_id = film.id  JOIN user ON library.user_id = user.id"
+    )
+    .then(([res]) => res);
+};
 
 const findOne = (id) => {
   return database
@@ -43,4 +51,5 @@ module.exports = {
   createOne,
   deleteOne,
   updateOne,
+  findByUser,
 };
