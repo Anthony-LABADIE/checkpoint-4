@@ -11,12 +11,6 @@ function Library() {
   const [postRangeval, setPostRangeval] = useState({
     remarque: "",
   });
-  const [isShown, setIsShown] = useState(false);
-
-  const handleClick = () => {
-    // 👇️ toggle visibility
-    setIsShown(!isShown);
-  };
 
   const getAllFilmLibrary = async () => {
     api.get(`film/library/${auth.data.id}`).then((response) => {
@@ -76,11 +70,7 @@ function Library() {
               </div>
             </div>
             {el.remarque === null ? null : (
-              <div
-                onClick={handleClick}
-                className="remarque"
-                role="presentation"
-              >
+              <div className="remarque" role="presentation">
                 <p>{el.remarque}/10</p>
               </div>
             )}
