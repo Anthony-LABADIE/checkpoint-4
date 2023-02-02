@@ -16,8 +16,8 @@
     cursor: pointer;
     transform: scale(1.1);
     transition: all 0.4s;
-    + .img_delete {
-      display: block;
+    + .container_hover {
+      display: flex;
       &:hover {
         cursor: pointer;
         display: block;
@@ -25,7 +25,8 @@
     }
   }
 }
-.img_delete {
+
+.container_hover {
   display: none;
   position: absolute;
   top: 35vh;
@@ -33,6 +34,12 @@
   &:hover {
     display: block;
   }
+}
+.img_delete {
+  position: absolute;
+  bottom: 25vh;
+  right: 2vh;
+  cursor: pointer;
 }
 .img_delete img {
   height: 4vh;
@@ -61,11 +68,19 @@
   flex-direction: column;
   position: absolute;
   align-items: center;
-  top: 14vh;
-  left: 8vh;
-  .img_verifier {
-    width: 2vh;
-    height: 2vh;
-    cursor: pointer;
+  top: -2vh;
+  right: 1.7vh;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 1vh;
+  &:hover {
+    + .img_film {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
   }
+}
+.img_verifier {
+  height: 3.5vh;
+  cursor: pointer;
 }

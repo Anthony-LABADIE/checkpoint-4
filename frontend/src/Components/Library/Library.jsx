@@ -11,6 +11,12 @@ function Library() {
   const [postRangeval, setPostRangeval] = useState({
     remarque: "",
   });
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = () => {
+    // 👇️ toggle visibility
+    setIsShown(!isShown);
+  };
 
   const getAllFilmLibrary = async () => {
     api.get(`film/library/${auth.data.id}`).then((response) => {
@@ -31,6 +37,7 @@ function Library() {
     await api
       .put(`library/${idFilmPost}`, { ...postRangeval })
       .catch((err) => err.response);
+    getAllFilmLibrary();
   };
   return (
     <div className="Containeur_lib_movie">
@@ -38,37 +45,45 @@ function Library() {
         <div>
           <div className="movies_lib">
             <img className="img_film" src={el.image} alt="imagefilm" />
-            <div className="img_delete">
-              <img
-                onClick={() => {
-                  deleteFilm(el.id);
-                }}
-                src={deleteicone}
-                alt="delete"
+            <div className="container_hover">
+              <div className="img_delete">
+                <img
+                  onClick={() => {
+                    deleteFilm(el.id);
+                  }}
+                  src={deleteicone}
+                  alt="delete"
+                  role="presentation"
+                />
+              </div>
+              <div className="change_remarque">
+                <input
+                  type="range"
+                  className="custom-range"
+                  min="0"
+                  max="10"
+                  name="remarque"
+                  onChange={handleChange}
+                />
+                <img
+                  className="img_verifier"
+                  onClick={() => handleSubmitremarque(el.id)}
+                  src={verifier}
+                  alt="logoverifier"
+                  typeof="submit"
+                  role="presentation"
+                />
+              </div>
+            </div>
+            {el.remarque === null ? null : (
+              <div
+                onClick={handleClick}
+                className="remarque"
                 role="presentation"
-              />
-            </div>
-            <div className="change_remarque">
-              <input
-                type="range"
-                className="custom-range"
-                min="1"
-                max="10"
-                name="remarque"
-                onChange={handleChange}
-              />
-              <img
-                className="img_verifier"
-                onClick={() => handleSubmitremarque(el.id)}
-                src={verifier}
-                alt="logoverifier"
-                typeof="submit"
-                role="presentation"
-              />
-            </div>
-            <div className="remarque">
-              <p>{el.remarque}/10</p>
-            </div>
+              >
+                <p>{el.remarque}/10</p>
+              </div>
+            )}
           </div>
         </div>
       ))}

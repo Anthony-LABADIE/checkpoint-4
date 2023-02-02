@@ -46,7 +46,7 @@ function MoviesPops() {
               <p className="text">Description</p>
             </div>
             <div className="movie_social">
-              <ul>
+              <ul className="ul_movies">
                 <li>
                   <img src={editer} alt="logo" className="material-icons" />
                 </li>

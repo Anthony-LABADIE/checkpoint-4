@@ -12,6 +12,17 @@
   display: flex;
   align-items: center;
 }
+.login_logout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login_logout button {
+  border-radius: 20px;
+  background-color: var(--text-bg-color);
+  cursor: pointer;
+}
 .profil img {
   width: 9vh;
   height: 9vh;
@@ -77,4 +88,13 @@
 }
 .link_nav {
   cursor: pointer;
+}
+.futur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2rem;
+  color: var(--text-bg-color);
+  font-family: var(--text-font-family);
 }

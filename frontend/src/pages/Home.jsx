@@ -7,7 +7,7 @@ import Library from "../Components/Library/Library";
 import dataNav from "../tools/dataNav";
 
 function Home() {
-  const { auth } = useContext(authContext);
+  const { auth, logout } = useContext(authContext);
   const [isActiveNav, setIsActiveNav] = useState(2);
 
   const handleActiveNav = (id) => {
@@ -24,7 +24,12 @@ function Home() {
       </div>
       <div className="profil">
         <img src={auth.data.image} alt="" />
-        <p>Mon Compte</p>
+        <div className="login_logout">
+          <p>Mon Compte</p>
+          <button type="button" onClick={logout}>
+            Se déconnecter
+          </button>
+        </div>
       </div>
       <div className="containeur_section">
         <nav className="navSection">
@@ -45,11 +50,11 @@ function Home() {
         {(() => {
           switch (true) {
             case isActiveNav === 1:
-              return <MoviesPops />;
+              return <p className="futur">Bientôt disponible</p>;
             case isActiveNav === 2:
               return <MoviesPops />;
             case isActiveNav === 3:
-              return <Library />;
+              return <p className="futur">Bientôt disponible</p>;
             case isActiveNav === 4:
               return <Library />;
             default:
