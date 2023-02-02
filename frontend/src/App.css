@@ -1,56 +1,37 @@
-body {
+body,
+html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-bg-color);
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
+:root {
+  --main-bg-color: #03101c;
+  --text-bg-color: #e3c75f;
+  --text-font-family: cursive;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  --recipe-bg-color: #46a9bf;
+  --btn-bg-color: #ffff9e;
+  --btn-bg-color-click: #fe9971;
+  --crd-bg-color: #fe9971;
+  --btn-font-color: #131313;
+  --btn-box-shadow: 10px 10px #131313;
+  --h1-font-size: 5rem;
+  --h1-font-size-mobile: 2rem;
+  --h2-font-size: 2.5rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1rem;
+  --h4-font-size: 1rem;
+  --from-bg-color: #ffff9e;
 }
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
+.navlink {
+  text-decoration: none;
+  color: var(--text-bg-color);
 }
