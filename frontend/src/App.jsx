@@ -6,6 +6,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import AuthProvider from "./contexts/AuthContexts";
 import ProtectedRoute from "./hooks/ProtectedRoute";
+import FirstPage from "./pages/FirstPage";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<FirstPage />} />
+            <Route path="/connexion" element={<Login />} />
             <Route path="/inscription" element={<Inscription />} />
             <Route
               path="/home"

@@ -70,10 +70,11 @@ const userController = {
             firstname,
             lastname,
             password: hashedPassword,
+            image,
           } = user;
           if (await argon2.verify(hashedPassword, password)) {
             const token = jwtSign(
-              { id, email: userEmail, firstname, lastname },
+              { id, email: userEmail, firstname, lastname, image },
               {
                 expiresIn: "1h",
               }
@@ -90,6 +91,7 @@ const userController = {
                 email,
                 firstname,
                 lastname,
+                image,
               });
           } else {
             res.status(404).send("Wrong password");

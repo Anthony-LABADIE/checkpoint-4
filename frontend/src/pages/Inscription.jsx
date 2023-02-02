@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+import LogoSiteWeb from "../Components/Navbar/LogoSiteWeb";
 import api from "../services/api";
+import "./Inscription.css";
 
 function Inscription() {
   const [inputInscription, setInputInscription] = useState({
@@ -38,55 +40,60 @@ function Inscription() {
   };
   return (
     <div>
-      <label htmlFor="login">
-        Firstname <br />
-        <input
-          type="text"
-          name="firstname"
-          placeholder="Firstname"
-          value={inputInscription.firstname}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label htmlFor="Inscription">
-        Lastname <br />
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Lastname"
-          value={inputInscription.lastname}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label htmlFor="Inscription">
-        Email <br />
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={inputInscription.email}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label htmlFor="Inscription">
-        Password <br />
-        <input
-          type="text"
-          name="password"
-          placeholder="Password"
-          value={inputInscription.password}
-          onChange={handleChange}
-        />
-      </label>
       <div>
-        <NavLink to="/">
-          <button onClick={handleSubmitConnexion} type="submit">
-            Valider
-          </button>
-        </NavLink>
+        <LogoSiteWeb />
+      </div>
+      <div className="containeur_inscription">
+        <label htmlFor="login">
+          Firstname <br />
+          <input
+            type="text"
+            name="firstname"
+            placeholder="Firstname"
+            value={inputInscription.firstname}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor="Inscription">
+          Lastname <br />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Lastname"
+            value={inputInscription.lastname}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor="Inscription">
+          Email <br />
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={inputInscription.email}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor="Inscription">
+          Password <br />
+          <input
+            type="text"
+            name="password"
+            placeholder="Password"
+            value={inputInscription.password}
+            onChange={handleChange}
+          />
+        </label>
+        <div>
+          <NavLink to="/">
+            <button onClick={handleSubmitConnexion} type="submit">
+              Valider
+            </button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
