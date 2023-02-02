@@ -1,13 +1,31 @@
-import PropTypes from "prop-types";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import editer from "../../assets/editer.png";
 import ajouter from "../../assets/ajouter.png";
+import api from "../../services/api";
+import { authContext } from "../../contexts/AuthContexts";
 import "./MoviesPops.scss";
 
-function MoviesPops({ film }) {
+function MoviesPops() {
+  const { auth } = useContext(authContext);
+  const [allFilm, setAllFilm] = useState([]);
+  const [library, setLibrary] = useState({
+    film_id: "",
+    user_id: auth.data.id,
+  });
+  useEffect(() => {
+    api.get("film/").then((response) => {
+      setAllFilm(response.data);
+    });
+  }, []);
+  const addMovieLibrary = (findIdFilm) => {
+    setLibrary({ ...library, film_id: findIdFilm });
+  };
+  useEffect(() => {
+    api.post("/library", library);
+  }, [library]);
   return (
-    <div>
-      {film.map((el) => (
+    <div className="movies_pops">
+      {allFilm.map((el) => (
         <div
           className="movie_card"
           id="bright"
@@ -33,7 +51,15 @@ function MoviesPops({ film }) {
                   <img src={editer} alt="logo" className="material-icons" />
                 </li>
                 <li>
-                  <img src={ajouter} alt="logo" className="material-icons" />
+                  <img
+                    onClick={() => {
+                      addMovieLibrary(el.id);
+                    }}
+                    src={ajouter}
+                    alt="logo"
+                    className="material-icons"
+                    role="presentation"
+                  />
                 </li>
               </ul>
             </div>
@@ -43,16 +69,5 @@ function MoviesPops({ film }) {
     </div>
   );
 }
-// {film.map((el) => (
-//   <div className="movies_pops">
-//     <img src={el.image} alt="movies" />
-//     <p>{el.title}</p>
-//   </div>
-// ))}
-
-MoviesPops.propTypes = {
-  film: PropTypes.func.isRequired,
-  map: PropTypes.func.isRequired,
-};
 
 export default MoviesPops;

@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import navigate from "navigate";
 import api from "../services/api";
 import { authContext } from "../contexts/AuthContexts";
-import "./Login.css";
 import LogoSiteWeb from "../Components/Navbar/LogoSiteWeb";
+import "./Login.css";
 
 function Login() {
-  const { login } = useContext(authContext);
+  const { login, auth } = useContext(authContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  useEffect(() => {
+    if (auth.data) {
+      navigate("/home");
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

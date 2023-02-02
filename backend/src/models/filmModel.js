@@ -1,20 +1,17 @@
 const database = require("../../config");
 
-/* Model User pour chaque donnée de la table User */
-
-/* Modes pour récupérer les USERS */
-
 const findAll = () => {
   return database
     .promise()
     .query("SELECT * FROM film")
     .then(([res]) => res);
 };
-const findByUser = () => {
+const findByUser = (id) => {
   return database
     .promise()
     .query(
-      "SELECT film.title, film.release_date, film.duration, film.genre, film.realisateur_id, film.id_status, film.id_library, film.image, film.affiche,user.id, user.firstname, user.lastname FROM library JOIN film ON library.film_id = film.id  JOIN user ON library.user_id = user.id"
+      "SELECT library.id, library.remarque, film.title, film.release_date, film.duration, film.genre, film.realisateur_id, film.id_status, film.id_library, film.image, film.affiche, user.firstname, user.lastname FROM library JOIN film ON library.film_id = film.id  JOIN user ON library.user_id = user.id WHERE user_id =?",
+      [Number(id)]
     )
     .then(([res]) => res);
 };

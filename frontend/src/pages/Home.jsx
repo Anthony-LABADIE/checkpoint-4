@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
-import api from "../services/api";
 import logo from "../assets/video.png";
 import { authContext } from "../contexts/AuthContexts";
 import MoviesPops from "../Components/moviesPop/MoviesPops";
 import "./Home.css";
+import Library from "../Components/Library/Library";
+import dataNav from "../tools/dataNav";
 
 function Home() {
   const { auth } = useContext(authContext);
-  const [film, setFilm] = useState([]);
+  const [isActiveNav, setIsActiveNav] = useState(2);
 
-  const getAllFilm = () => {
-    api.get("film/").then((response) => {
-      setFilm(response.data);
-    });
+  const handleActiveNav = (id) => {
+    setIsActiveNav(id);
   };
+
   return (
     <div className="container_home">
       <div className="home_logo">
@@ -29,18 +29,35 @@ function Home() {
       <div className="containeur_section">
         <nav className="navSection">
           <ul className="ulSection">
-            <li className="link_nav">Boutique</li>
-            <li onClick={getAllFilm} className="link_nav" role="presentation">
-              A l'affiche
-            </li>
-            <li className="link_nav">Film</li>
-            <li className="link_nav">Bibliotèque</li>
+            {dataNav.map((el) => (
+              <li
+                onClick={() => handleActiveNav(el.id)}
+                className="link_nav"
+                role="presentation"
+              >
+                {el.title}
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
       <div className="containeur_movies">
-        <MoviesPops film={film} />
+        {(() => {
+          switch (true) {
+            case isActiveNav === 1:
+              return <MoviesPops />;
+            case isActiveNav === 2:
+              return <MoviesPops />;
+            case isActiveNav === 3:
+              return <Library />;
+            case isActiveNav === 4:
+              return <Library />;
+            default:
+              return null;
+          }
+        })()}
       </div>
+      ;
     </div>
   );
 }

@@ -1,0 +1,71 @@
+.Containeur_lib_movie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.movies_lib {
+  position: relative;
+}
+.img_film {
+  padding: 4vh 1vh 2vh 4vh;
+  height: 35vh;
+  transition: all 0.4s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.4s;
+    + .img_delete {
+      display: block;
+      &:hover {
+        cursor: pointer;
+        display: block;
+      }
+    }
+  }
+}
+.img_delete {
+  display: none;
+  position: absolute;
+  top: 35vh;
+  right: 1vh;
+  &:hover {
+    display: block;
+  }
+}
+.img_delete img {
+  height: 4vh;
+}
+.remarque {
+  display: flex;
+  position: absolute;
+  color: var(--text-bg-color);
+  border: solid 1px var(--text-bg-color);
+  border-radius: 40px;
+  padding: 1vh;
+  top: 5.5vh;
+  left: 5vh;
+  background-color: black;
+  width: 2.8vh;
+  height: 2.8vh;
+  align-items: center;
+  text-align: center;
+  p {
+    margin: 0;
+    font-size: 1.5vh;
+  }
+}
+.change_remarque {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  top: 14vh;
+  left: 8vh;
+  .img_verifier {
+    width: 2vh;
+    height: 2vh;
+    cursor: pointer;
+  }
+}

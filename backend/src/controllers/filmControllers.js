@@ -11,9 +11,10 @@ const filmController = {
         res.sendStatus(500);
       });
   },
-  getFilmByUser: (_, res) => {
+  getFilmByUser: (req, res) => {
+    const { id } = req.params;
     filmModel
-      .findByUser()
+      .findByUser(id)
       .then((film) => res.send(film))
       .catch((err) => {
         console.error(err);
